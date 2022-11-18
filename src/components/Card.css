@@ -1,0 +1,26 @@
+*{
+    /*margin: 0;*/
+    padding: 0;
+    box-sizing: border-box;
+   }
+  
+  .card-holder{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .card{
+    background: beige;
+    padding: 20px;
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    font-family: Arial;
+  }
+
+  .card h1 {
+    font-family: cursive;
+    color: #332E2F
+
+  }

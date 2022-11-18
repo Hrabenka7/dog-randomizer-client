@@ -1,6 +1,6 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
+import Card from "./components/Card";
 
 function App() {
   const [data, setData] = React.useState(null);
@@ -12,13 +12,14 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>{!data ? "Loading..." : data}</p>
-      </header>
+    <div class="wrapper">
+      <Card></Card>
     </div>
   );
+
+
+
+  
 }
 
 export default App;
