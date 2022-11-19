@@ -4,14 +4,16 @@ import { Image } from 'primereact/image';
 import { Dropdown } from 'primereact/dropdown';
 import "./Card.css";
 
-function Card(props) {
-    console.log('props breed', props.breeds)
+function Card(props) {  
+    console.log('RERENDERED')
     const [selectedBreed, setSelectedBreed]= useState(null);
     
     const onBreedChange = (e) => {
-        setSelectedBreed(e.value);
+        setSelectedBreed(e.value.breedName);
+        props.loadFilteredImage(e.value.breedName)
     }
     
+
     return (
         <React.Fragment>
         <div>
@@ -23,7 +25,7 @@ function Card(props) {
             <Button label="Favourite" icon="pi pi-heart" />
             <Button label="Next" onClick={props.loadImage}/>
             <Button label="Like" onClick={props.loadImage}/>
-           {/*  <Dropdown value={selectedBreed} options={props.breeds.message} onChange={onBreedChange} optionLabel={props.breeds.message} placeholder="Select a Breed"/> */}
+            <Dropdown value={selectedBreed} options={props.breeds} onChange={onBreedChange} optionLabel="breedName" placeholder="Select a Breed"/>
             </div>
         </div>
         </div>

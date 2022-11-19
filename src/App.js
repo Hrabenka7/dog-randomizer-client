@@ -22,6 +22,12 @@ function App() {
     setBreeds(await res.json());
   };
 
+  const loadFilteredImage = async (breed) => {
+    const res = await fetch(`/breed/param?breed=${breed}`);
+    setData(await res.json());
+  };
+
+
   useEffect(() => {
     loadRandomImage();
     return () => {};
@@ -35,7 +41,7 @@ function App() {
  return (
   <React.Fragment>
     <div className="wrapper">
-      <Card data={data} loadImage={loadRandomImage} breeds={breeds}></Card>
+      <Card data={data} loadImage={loadRandomImage} breeds={breeds} loadFilteredImage={loadFilteredImage}></Card>
     </div>
   </React.Fragment>
   ); 
