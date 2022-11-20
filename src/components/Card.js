@@ -3,34 +3,30 @@ import { Button } from 'primereact/button';
 import { Image } from 'primereact/image';
 import { Dropdown } from 'primereact/dropdown';
 import "./Card.css";
+import Photo from './Photo';
 
 function Card(props) {  
-    console.log('RERENDERED')
-    const [selectedBreed, setSelectedBreed]= useState(null);
-    
-    const onBreedChange = (e) => {
-        setSelectedBreed(e.value.breedName);
-        props.loadFilteredImage(e.value.breedName)
-    }
-    
+  console.log('Card Rendered', props);
 
-    return (
-        <React.Fragment>
-        <div>
-            <div className="card-holder">
-            <div className="card">
-            <h1> Dog Randomizer</h1>
-            <h3> Breed: {props.data?.breed}</h3>
-            <Image src={props.data?.message} alt="Image" width="250" />
-            <Button label="Favourite" icon="pi pi-heart" />
-            <Button label="Next" onClick={props.loadImage}/>
-            <Button label="Like" onClick={props.loadImage}/>
-            <Dropdown value={selectedBreed} options={props.breeds} onChange={onBreedChange} optionLabel="breedName" placeholder="Select a Breed"/>
-            </div>
-        </div>
-        </div>
-        </React.Fragment>
-    )
+	return (
+	<React.Fragment>
+		<div>
+			<div className="card-holder">
+				<div className="card">
+					<h1>{props.data}</h1>
+				{/* 	<h3> Breed: {props.data?.breed}</h3> */}
+				{/* 	<Dropdown value={selectedBreed} options={props.breeds} onChange={onBreedChange} optionLabel="breedName" placeholder="Select a Breed"/> */}
+						{/* <Image src={props.data?.message} alt="Image" width="250" /> */}
+						{/* <Breed imageBreed={sharedData}></Breed> */}
+						<Photo/>
+					<Button label="Favourite" icon="pi pi-heart" />
+					<Button label="Next" onClick={props.loadImage}/>
+					<Button label="Like" onClick={props.loadImage}/>
+				</div>
+		</div>
+		</div>
+		</React.Fragment>
+	)
 
 }
 export default Card
