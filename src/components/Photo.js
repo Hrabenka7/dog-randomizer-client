@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Image } from 'primereact/image';
 import { ProgressSpinner } from 'primereact/progressspinner';
 import "./Photo.css";
-import Breed from './Breed';
+import { Button } from 'primereact/button';
 import { capitalize} from '../helpers/string-transform-helper';
 
 
@@ -30,6 +30,7 @@ function Photo(props) {
 	};
 	
 	const loadFilteredImage = async (breed) => {
+		console.log('breed', breed);
 		const res = await fetch(`/breed/param?breed=${breed}`);
 		setImageData(await res.json());
 	  };
@@ -40,6 +41,8 @@ function Photo(props) {
         <React.Fragment>
 			<h3> Breed: {capitalize(imageData.breed)}</h3>
             <Image src={imageData.message} alt="Image" width="250" />
+			<Button label="Next" onClick={() => props.breed && props.breed.breedName ? loadFilteredImage(props.breed.breedName) : loadRandomImage()}/>
+			<Button label="Like" onClick={() => props.breed && props.breed.breedName ? loadFilteredImage(props.breed.breedName) : loadRandomImage()}/>
         </React.Fragment>
         )
 		:

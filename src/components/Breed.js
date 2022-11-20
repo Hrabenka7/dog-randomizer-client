@@ -25,8 +25,9 @@ function Breed() {
         <div>{Object.entries(breeds).length > 0 ?
         (
         <React.Fragment>
-			<Dropdown value={breed} options={breeds} onChange={onBreedChange} optionLabel="breedName" placeholder="Select a Breed" />	
+			<Dropdown value={breed} options={breeds} onChange={onBreedChange} optionLabel="breedName" placeholder="Select a Breed" showClear />	
 			<Photo breed={breed}/>
+			{/* <Button label="Favourite" icon="pi pi-heart" /> */}
         </React.Fragment>
         )
         : 
