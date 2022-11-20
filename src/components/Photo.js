@@ -16,6 +16,14 @@ function Photo(props) {
 		return () => {};
 	}, []);
 
+	useEffect(() => {
+		if(props && props.breed) {
+			console.log('breed',props.breed)
+			loadFilteredImage(props.breed.breedName)
+		}
+	  }, [props.breed]);
+
+
 	const loadRandomImage = async () => {
 		const res = await fetch("/random");
 		setImageData(await res.json())
@@ -31,7 +39,6 @@ function Photo(props) {
         (
         <React.Fragment>
 			<h3> Breed: {capitalize(imageData.breed)}</h3>
-			<Breed imageBreed={imageData.breed} loadFilteredImage={loadFilteredImage}></Breed>
             <Image src={imageData.message} alt="Image" width="250" />
         </React.Fragment>
         )

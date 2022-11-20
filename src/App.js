@@ -3,8 +3,7 @@ import "./App.css";
 import Card from "./components/Card";
 import "primereact/resources/themes/lara-light-indigo/theme.css";  //theme
 import "primereact/resources/primereact.min.css";                  //core css
-import "primeicons/primeicons.css";                                //icons
- 
+import "primeicons/primeicons.css";                                //icons 
 
 function App() {
   console.log('App Rendered');
@@ -13,7 +12,6 @@ function App() {
  return (
   <React.Fragment>
     <div className="wrapper">
-      {/* <Card data={imageData} loadImage={loadRandomImage} breeds={breeds} loadFilteredImage={loadFilteredImage}></Card> */}
       <Card data={appName}></Card>
     </div>
   </React.Fragment>
