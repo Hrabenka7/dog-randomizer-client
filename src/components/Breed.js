@@ -48,15 +48,17 @@ function Breed() {
   }
 
     return (
-        <div>{Object.entries(breeds).length > 0 ?
+        <div className="layout">{Object.entries(breeds).length > 0 ?
         (
-        <React.Fragment>
-			<Dropdown value={breed} options={breeds} onChange={onBreedChange} optionLabel="breedName" placeholder="Select a Breed" showClear />	
-			<br></br>
-			<Dropdown value={subBreed} options={subBreeds} onChange={onSubBreedChange} placeholder={subBreedsPlaceholder} disabled={!subBreedStatus} showClear />	
-			<Photo breed={breed} subBreed={subBreed}/>
-			{/* <Button label="Favourite" icon="pi pi-heart" /> */}
-        </React.Fragment>
+          <React.Fragment>
+          <div className="left">
+            <Photo breed={breed} subBreed={subBreed}/>
+          </div>
+          <div className="right">
+            <div><p>Breed: </p><Dropdown value={breed} options={breeds} onChange={onBreedChange} optionLabel="breedName" placeholder="Select a Breed" showClear /></div>
+            <div><p>SubBreed: </p><Dropdown value={subBreed} options={subBreeds} onChange={onSubBreedChange} placeholder={subBreedsPlaceholder} disabled={!subBreedStatus} showClear /></div>
+          </div>
+          </React.Fragment>
         )
         : 
         (
@@ -66,5 +68,6 @@ function Breed() {
     )
 
 }
+
 
 export default Breed

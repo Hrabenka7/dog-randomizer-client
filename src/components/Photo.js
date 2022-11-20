@@ -112,27 +112,21 @@ function Photo(props) {
         <div>{imageData ?
         (
         <React.Fragment>
-			<h3> Breed: {imageData?.breed ? capitalize(imageData.breed) : ''}</h3>
-            <Image src={imageData.message} alt="Image" width="250" />
-			<Button label="Next" onClick={ () => nextHandler(props.breed, props.subBreed) }/>
-			{ isFavoriteDog(imageData.imageName) ?
-			(
-				<Button label="❤ Favorite" disabled={true} />
-			)
-			:
-			(
-				<Button label="Like" onClick={ () => likeHandler(props.breed)}/>
-			)
-			}
+            <div className="image"><Image src={imageData.message} alt="Image" width="300" height="300" /></div>
+						<h3> This is {imageData?.breed}</h3>
+						{ isFavoriteDog(imageData.imageName) ? (<Button label="❤ Favorite" disabled={true}/>)
+						:(<Button className="p-button-warning" label="I like him" onClick={ () => likeHandler(props.breed)}/>)}
+						<span className="vertical-line"></span>
+						<Button className="p-button-secondary" label="Next one" onClick={ () => nextHandler(props.breed, props.subBreed) }/>
         </React.Fragment>
         )
-		:
-		(
-		<React.Fragment>
-			<ProgressSpinner/>
-		</React.Fragment>
-		)
-        }</div>
+				:
+				(
+				<React.Fragment>
+					<ProgressSpinner/>
+				</React.Fragment>
+				)
+						}</div>
     )
 
 }
