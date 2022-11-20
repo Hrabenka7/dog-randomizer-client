@@ -6,7 +6,7 @@ import axios from 'axios';
 
 
 function Breed() {    
-
+	console.log('Breed Rendered')
   const [breeds, setBreeds] = useState({});
   const [breed, setBreed] = useState(null);
   const [subBreeds, setSubBreeds] = useState({}); 
@@ -16,7 +16,7 @@ function Breed() {
 
   useEffect(() => {
     axios.get("/allBreeds").then((res) => {
-      console.log('breeds:', + res)
+      console.log('breeds:', res)
       setBreeds(res.data)})
     }, []);
 

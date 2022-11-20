@@ -23,16 +23,16 @@ function Photo(props) {
 		}
 
 		if(props.breed && props.subBreed) {
-			console.log('subBreed: ' + props.suBreed);
+			console.log('subBreed:', props.subBreed);
 			loadFilteredImage(props.breed.breedName, props.subBreed);
 		}
 		else if(props.breed) {
-			console.log('breed: ' + props.breed);
+			console.log('breed:', props.breed);
 			loadFilteredImage(props.breed.breedName);
 		}
-		else {
+		/* else {
 			loadRandomImage();
-		}
+		} */
 	}, [props.breed, props.subBreed]);
 
 	const loadRandomImage = () => {
@@ -84,10 +84,10 @@ function Photo(props) {
 		return favoriteDogs.includes(dogName);
 	};
 
-	// @todo add subfilter 
-	const nextHandler = async (breed) => {
-		if (breed && breed.breedName && breed.subBreed) {
-			loadFilteredImage(breed.breedName, breed.subBreed);
+	// @todo add subfilter, fix props passing
+	const nextHandler = async (breed, subBreed) => {
+		if (breed && breed.breedName && subBreed) {
+			loadFilteredImage(breed.breedName, subBreed);
 		}
 		else if(breed && breed.breedName) {
 			loadFilteredImage(breed.breedName);
@@ -114,7 +114,7 @@ function Photo(props) {
         <React.Fragment>
 			<h3> Breed: {imageData?.breed ? capitalize(imageData.breed) : ''}</h3>
             <Image src={imageData.message} alt="Image" width="250" />
-			<Button label="Next" onClick={ () => nextHandler(props.breed) }/>
+			<Button label="Next" onClick={ () => nextHandler(props.breed, props.subBreed) }/>
 			{ isFavoriteDog(imageData.imageName) ?
 			(
 				<Button label="❤ Favorite" disabled={true} />
