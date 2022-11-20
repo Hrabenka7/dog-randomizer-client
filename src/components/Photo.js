@@ -22,14 +22,18 @@ function Photo(props) {
 			return;
 		}
 
-		if (props.breed) {
+		if(props.breed && props.subBreed) {
+			console.log('subBreed: ' + props.suBreed);
+			loadFilteredImage(props.breed.breedName, props.subBreed);
+		}
+		else if(props.breed) {
 			console.log('breed: ' + props.breed);
 			loadFilteredImage(props.breed.breedName);
 		}
 		else {
 			loadRandomImage();
 		}
-	}, [props.breed]);
+	}, [props.breed, props.subBreed]);
 
 	const loadRandomImage = () => {
 		axios.get("/random").then((res) => {
@@ -38,10 +42,18 @@ function Photo(props) {
 		})
 	};
 	
-	const loadFilteredImage = async (breed) => {
+	const loadFilteredImage = (breed, subBreed = null) => {
 		console.log('breed', breed);
-		const res = await fetch(`/breed/param?breed=${breed}`);
-		setImageData(await res.json());
+		axios.get("/breed/param", {
+			params: {
+			  breed: breed,
+			  ...(subBreed ? { subBread: subBreed } : {})
+			},
+		  }).then((res)=> {
+			  setImageData(res.data);
+			  console.log('imageData', imageData);
+		  })
+		//const res = await fetch(`/breed/param?breed=${breed}`);
 	};
 
 	const saveFavoriteDog = (dogName) => {
@@ -72,8 +84,12 @@ function Photo(props) {
 		return favoriteDogs.includes(dogName);
 	};
 
+	// @todo add subfilter 
 	const nextHandler = async (breed) => {
-		if (breed && breed.breedName) {
+		if (breed && breed.breedName && breed.subBreed) {
+			loadFilteredImage(breed.breedName, breed.subBreed);
+		}
+		else if(breed && breed.breedName) {
 			loadFilteredImage(breed.breedName);
 		}
 		else {
@@ -96,7 +112,7 @@ function Photo(props) {
         <div>{imageData ?
         (
         <React.Fragment>
-			<h3> Breed: {capitalize(imageData.breed)}</h3>
+			<h3> Breed: {imageData?.breed ? capitalize(imageData.breed) : ''}</h3>
             <Image src={imageData.message} alt="Image" width="250" />
 			<Button label="Next" onClick={ () => nextHandler(props.breed) }/>
 			{ isFavoriteDog(imageData.imageName) ?

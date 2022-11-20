@@ -54,7 +54,7 @@ function Breed() {
 			<Dropdown value={breed} options={breeds} onChange={onBreedChange} optionLabel="breedName" placeholder="Select a Breed" showClear />	
 			<br></br>
 			<Dropdown value={subBreed} options={subBreeds} onChange={onSubBreedChange} placeholder={subBreedsPlaceholder} disabled={!subBreedStatus} showClear />	
-			<Photo breed={breed}/>
+			<Photo breed={breed} subBreed={subBreed}/>
 			{/* <Button label="Favourite" icon="pi pi-heart" /> */}
         </React.Fragment>
         )
