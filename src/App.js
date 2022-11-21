@@ -6,7 +6,6 @@ import "./App.css";
 import Card from "./components/Card/Card";
 
 function App() {
-  console.log('App Rendered');
   const appName = "Dog Randomizer";
 
  return (

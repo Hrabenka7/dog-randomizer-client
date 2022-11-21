@@ -3,8 +3,6 @@ import "./Card.css";
 import Filter from '../Filter/Filter';
 
 function Card(props) {  
-  console.log('Card Rendered', props);
-
 	return (
 		<React.Fragment>
 			<div className="card">

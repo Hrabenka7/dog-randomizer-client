@@ -6,8 +6,6 @@ import axios from 'axios';
 
 
 function Filter() {    
-	console.log('Breed Rendered')
-	
 	const [breeds, setBreeds] = useState({});
 	const [breed, setBreed] = useState(null);
 	const [subBreeds, setSubBreeds] = useState({}); 
@@ -16,12 +14,11 @@ function Filter() {
 	const [subBreedsPlaceholder, setSubBreedsPlaceholder] = useState("No Breed Selected");
 
 	useEffect(() => {
-		axios.get("/allBreeds").then((res) => {
+		axios.get("/all").then((res) => {
 			setBreeds(res.data)})
 		}, []);
 
 	const onBreedChange = (e) => {
-		debugger;
 		setBreed(e.value);
 		if (e.value === undefined) {
 			setSubBreedsStatus(false);
@@ -42,7 +39,6 @@ function Filter() {
 	}
 	
 	const onSubBreedChange = (e) => {
-		debugger;
 		setSubBreed(e.value);
 	}
 

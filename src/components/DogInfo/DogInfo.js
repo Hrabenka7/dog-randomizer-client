@@ -6,7 +6,6 @@ import { Button } from 'primereact/button';
 import axios from 'axios';
 
 function DogInfo(props) {  
-	console.log('DogInfo Rendered');
 	const [imageData, setImageData] = useState(null);
 
 	useEffect(() => {
@@ -15,11 +14,9 @@ function DogInfo(props) {
 		}
 
 		if(props.breed && props.subBreed) {
-			console.log('subBreed:', props.subBreed);
 			loadFilteredImage(props.breed.breedName, props.subBreed);
 		}
 		else if(props.breed) {
-			console.log('breed:', props.breed);
 			loadFilteredImage(props.breed.breedName);
 		}
 		else {
@@ -36,7 +33,7 @@ function DogInfo(props) {
 	};
 	
 	const loadFilteredImage = (breed, subBreed = null) => {
-		axios.get("/breed/param", {
+		axios.get("/filtered", {
 			params: {
 			  breed: breed,
 			  ...(subBreed ? { subBread: subBreed } : {})
@@ -89,8 +86,7 @@ function DogInfo(props) {
         (
         <React.Fragment>
             <div className="image"><Image src={imageData.message} alt="Image" width="350" height="300" /></div>
-			<h3> This is {imageData?.breed ? imageData.breed : 
-			(props?.subBreed ? props.subBreed + ' '+ props.breed?.breedName : props.breed?.breedName)}</h3>
+			<h3> This is {imageData.breed ? imageData.breed : 'mysterious breed' }</h3>
 				{ isFavoriteDog(imageData.imageName) ? (<Button label="❤ Favorite" disabled={true}/>)
 				:(<Button className="p-button-warning" label="I like him" onClick={ () => likeHandler(props.breed, props.subBreed)}/>)}
 				<span className="vertical-line"></span>
