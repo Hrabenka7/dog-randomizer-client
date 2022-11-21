@@ -8,3 +8,7 @@
   margin: 0 10px;
   height: 38px;
 }
+
+.p-image img {
+  border-style: groove;
+}

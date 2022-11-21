@@ -2,7 +2,19 @@
   width: 100%;
 
   display: flex;
-  gap: 16px;
+  gap: 5px;
+  flex-wrap: wrap;
 }
 
 .left { flex-grow: 1; }
+.right {
+  margin-top: 3%;
+}
+
+
+@media only screen and (max-width: 830px) {
+  .right {
+    width: inherit
+  }
+}
+
