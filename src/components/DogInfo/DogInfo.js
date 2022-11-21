@@ -96,7 +96,9 @@ function DogInfo(props) {
 		:
 		(
 		<React.Fragment>
-			<ProgressSpinner/>
+			 <div className="empty">
+				<ProgressSpinner/>
+			 </div>
 		</React.Fragment>
 		)
 		}

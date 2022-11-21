@@ -12,3 +12,7 @@
 .p-image img {
   border-style: groove;
 }
+
+.empty{
+  width: 50%;
+}
