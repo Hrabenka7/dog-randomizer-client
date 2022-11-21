@@ -1,9 +1,9 @@
 import React from 'react';
+import "primereact/resources/themes/lara-light-indigo/theme.css";  
+import "primereact/resources/primereact.min.css";                  
+import "primeicons/primeicons.css";                                
 import "./App.css";
-import Card from "./components/Card";
-import "primereact/resources/themes/lara-light-indigo/theme.css";  //theme
-import "primereact/resources/primereact.min.css";                  //core css
-import "primeicons/primeicons.css";                                //icons 
+import Card from "./components/Card/Card";
 
 function App() {
   console.log('App Rendered');
